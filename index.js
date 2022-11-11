@@ -2,6 +2,8 @@
 const { Sequelize } = require("sequelize");
 const express = require("express");
 const app = express();
+const usersController = require("./controllers/users_controller");
+const eventsController = require("./controllers/events_controller");
 
 // CONFIGURATION / MIDDLEWARE
 require("dotenv").config();
@@ -16,6 +18,8 @@ app.get("/", (req, res) => {
 });
 
 //CONTROLLERS
+app.use("/api/users", usersController);
+app.use("/api/events", eventsController);
 
 // LISTEN
 app.listen(process.env.PORT, () => {

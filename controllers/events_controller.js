@@ -1,22 +1,30 @@
 // DEPENDENCIES
 const { Op } = require("sequelize");
 const events = require("express").Router();
-const db = require("../models");
-const { Event } = db;
+// const db = require("../models");
+// const { Event } = db;
 
 // GET ALL EVENTS
 events.get("/", async (req, res) => {
-  try {
-    const foundEvents = await Event.findAll({
-      order: [["date", "DES"]],
-    });
-    res.status(200).json(foundEvents);
-  } catch (error) {
-    res.status(500).json(error);
-  }
+  res.status(200).json({
+    message: "This is the GET ALL EVENTS ROUTE",
+  });
+  // try {
+  //   const foundEvents = await Event.findAll({
+  //     order: [["date", "DES"]],
+  //   });
+  //   res.status(200).json(foundEvents);
+  // } catch (error) {
+  //   res.status(500).json(error);
+  // }
 });
 
 // GET A SPECIFIC EVENT
+events.get("/:id", async (req, res) => {
+  res.status(200).json({
+    message: "This route will get a secific event",
+  });
+});
 
 // CREATE AN EVENT
 

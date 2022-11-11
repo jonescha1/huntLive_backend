@@ -1,29 +1,35 @@
 //  DEPENDENCIES
 const { Op } = require("sequelize");
 const users = require("express").Router();
-const db = require("../models");
-const { User } = db;
+// const db = require("../models");
+// const { User } = db;
 
 // GET ALL USERS
 users.get("/", async (req, res) => {
-  try {
-    const foundUsers = await User.findAll();
-    res.status(200).json(foundUsers);
-  } catch (error) {
-    res.status(500).json(error);
-  }
+  res.status(200).json({
+    message: "This route will GET ALL USERS",
+  });
+  // try {
+  //   const foundUsers = await User.findAll();
+  //   res.status(200).json(foundUsers);
+  // } catch (error) {
+  //   res.status(500).json(error);
+  // }
 });
 
 // GET A SPECIFIC USER
 users.get("/:username", async (req, res) => {
-  try {
-    const foundUser = await User.findOne({
-      where: { username: req.params.username },
-    });
-    res.status(200).json(foundUser);
-  } catch (error) {
-    res.status(500).json(error);
-  }
+  res.status(200).json({
+    message: "This route will get a SPECIFIC USER",
+  });
+  // try {
+  //   const foundUser = await User.findOne({
+  //     where: { username: req.params.username },
+  //   });
+  //   res.status(200).json(foundUser);
+  // } catch (error) {
+  //   res.status(500).json(error);
+  // }
 });
 
 // CREATE A USER

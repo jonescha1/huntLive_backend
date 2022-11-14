@@ -4,43 +4,61 @@ const users = require("express").Router();
 // const db = require("../models");
 // const { User } = db;
 
-// GET ALL USERS
+// SHOW ALL USERS
 users.get("/", async (req, res) => {
   res.status(200).json({
-    message: "This route will GET ALL USERS",
+    message: "Show all users",
   });
-  // try {
-  //   const foundUsers = await User.findAll();
-  //   res.status(200).json(foundUsers);
-  // } catch (error) {
-  //   res.status(500).json(error);
-  // }
 });
 
-// GET A SPECIFIC USER
-users.get("/:username", async (req, res) => {
+// SHOW NEW FORM FOR USERS
+users.get("/new", async (req, res) => {
   res.status(200).json({
-    message: "This route will get a SPECIFIC USER",
+    message: "Shows new form for users",
   });
-  // try {
-  //   const foundUser = await User.findOne({
-  //     where: { username: req.params.username },
-  //   });
-  //   res.status(200).json(foundUser);
-  // } catch (error) {
-  //   res.status(500).json(error);
-  // }
 });
 
-// CREATE A USER
-// ***this needs to check and make sure another user doesnt have the same username
-// ***validate the needed information has been entered
+// CREATE NEW USER
+users.post("/", async (req, res) => {
+  res.status(200).json({
+    message: "Create new user",
+  });
+});
 
-// UPDATE A USER
-// ***make sure a user cant update someone elses profile
+// SHOW EDIT FORM FOR USER
+users.get("/:id/edit", async (req, res) => {
+  res.status(200).json({
+    message: `Shows edit form for user with id: ${req.params.id}`,
+  });
+});
 
-// DELETE A USER
-// ***make sure a user cant delete someone elses profile
+// SHOW DELETE FORM FOR USER WITH :ID
+users.get("/:id/delete", async (req, res) => {
+  res.status(200).json({
+    message: `Show delete form for users with id: ${req.params.id}`,
+  });
+});
+
+users
+  .route("/:id")
+  // SHOW USER BY ID
+  .get(async (req, res) => {
+    res.status(200).json({
+      message: `Shows user with id: ${req.params.id}`,
+    });
+  })
+  // UPDATE USER BY ID
+  .put(async (req, res) => {
+    res.status(200).json({
+      message: `Update route for user with id: ${req.params.id}`,
+    });
+  })
+  // DELETE USER BY ID
+  .delete(async (req, res) => {
+    res.status(200).json({
+      message: `Delete user with id: ${req.params.id}`,
+    });
+  });
 
 // EXPORT
 module.exports = users;

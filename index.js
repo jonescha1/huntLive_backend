@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const usersController = require("./controllers/users_controller");
 const eventsController = require("./controllers/events_controller");
+const teamsController = require("./controllers/teams_controller");
 
 // CONFIGURATION / MIDDLEWARE
 require("dotenv").config();
@@ -20,6 +21,7 @@ app.get("/api", (req, res) => {
 //CONTROLLERS
 app.use("/api/users", usersController);
 app.use("/api/events", eventsController);
+app.use("/api/teams", teamsController);
 
 // LISTEN
 app.listen(process.env.PORT, () => {

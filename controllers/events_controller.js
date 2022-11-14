@@ -4,33 +4,61 @@ const events = require("express").Router();
 // const db = require("../models");
 // const { Event } = db;
 
-// GET ALL EVENTS
+// SHOW ALL EVENTS
 events.get("/", async (req, res) => {
   res.status(200).json({
-    message: "This is the GET ALL EVENTS ROUTE",
+    message: "Show all events",
   });
-  // try {
-  //   const foundEvents = await Event.findAll({
-  //     order: [["date", "DES"]],
-  //   });
-  //   res.status(200).json(foundEvents);
-  // } catch (error) {
-  //   res.status(500).json(error);
-  // }
 });
 
-// GET A SPECIFIC EVENT
-events.get("/:id", async (req, res) => {
+// SHOW NEW FORM FOR EVENTS
+events.get("/new", async (req, res) => {
   res.status(200).json({
-    message: "This route will get a secific event",
+    message: "Shows new form for events",
   });
 });
 
-// CREATE AN EVENT
+// CREATE NEW EVENT
+events.post("/", async (req, res) => {
+  res.status(200).json({
+    message: "Create new event",
+  });
+});
 
-// UPDATE AN EVENT (THE EVENT SHOULD BE ONLY BE ABLE TO UPDATE IF THE UPDATE IS MADE BY THE CREATER)
+// SHOW EDIT FORM FOR EVENT
+events.get("/:id/edit", async (req, res) => {
+  res.status(200).json({
+    message: `Shows edit form for event with id: ${req.params.id}`,
+  });
+});
 
-// DELETE AN EVENT (WILL NEED ADMIN RIGHTS TO DELETE AN EVENT THAT IS NOT THE OWNED)
+// SHOW DELETE FORM FOR EVENT WITH :ID
+events.get("/:id/delete", async (req, res) => {
+  res.status(200).json({
+    message: `Show delete form for event with id: ${req.params.id}`,
+  });
+});
+
+events
+  .route("/:id")
+  // SHOW EVENT BY ID
+  .get(async (req, res) => {
+    res.status(200).json({
+      message: `Shows event with id: ${req.params.id}`,
+    });
+  })
+  // UPDATE EVENT BY ID
+  .put(async (req, res) => {
+    res.status(200).json({
+      message: `Update route for event with id: ${req.params.id}`,
+    });
+  })
+  // DELETE EVENT BY ID
+  .delete(async (req, res) => {
+    res.status(200).json({
+      message: `Delete event with id: ${req.params.id}`,
+    });
+  });
 
 // EXPORT
 module.exports = events;

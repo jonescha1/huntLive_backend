@@ -11,31 +11,10 @@ teams.get("/", async (req, res) => {
   });
 });
 
-// SHOW NEW FORM FOR TEAMS
-teams.get("/new", async (req, res) => {
-  res.status(200).json({
-    message: "Shows new form for teams",
-  });
-});
-
 // CREATE NEW TEAM
 teams.post("/", async (req, res) => {
   res.status(200).json({
     message: "Create new team",
-  });
-});
-
-// SHOW EDIT FORM FOR TEAM
-teams.get("/:id/edit", async (req, res) => {
-  res.status(200).json({
-    message: `Shows edit form for team with id: ${req.params.id}`,
-  });
-});
-
-// SHOW DELETE FORM FOR TEAM WITH :ID
-teams.get("/:id/delete", async (req, res) => {
-  res.status(200).json({
-    message: `Show delete form for teams with id: ${req.params.id}`,
   });
 });
 

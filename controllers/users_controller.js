@@ -11,31 +11,10 @@ users.get("/", async (req, res) => {
   });
 });
 
-// SHOW NEW FORM FOR USERS
-users.get("/new", async (req, res) => {
-  res.status(200).json({
-    message: "Shows new form for users",
-  });
-});
-
 // CREATE NEW USER
 users.post("/", async (req, res) => {
   res.status(200).json({
     message: "Create new user",
-  });
-});
-
-// SHOW EDIT FORM FOR USER
-users.get("/:id/edit", async (req, res) => {
-  res.status(200).json({
-    message: `Shows edit form for user with id: ${req.params.id}`,
-  });
-});
-
-// SHOW DELETE FORM FOR USER WITH :ID
-users.get("/:id/delete", async (req, res) => {
-  res.status(200).json({
-    message: `Show delete form for users with id: ${req.params.id}`,
   });
 });
 
